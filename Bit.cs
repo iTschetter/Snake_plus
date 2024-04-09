@@ -10,17 +10,20 @@ namespace Snake_
     {
         public int X { get; set; }
         public int Y { get; set; }
+        public string Direction { get; set; }
         //public int width { get; set; }
         //public int height { get; set; }
         public Bit()
         {
             X = 0;
             Y = 0;
+            Direction = "Null";
         }
-        public Bit(int x, int y)
+        public Bit(int x, int y, string direction)
         {
             X = x;
             Y = y;
+            Direction = direction;
         }
     }
 }
