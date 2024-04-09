@@ -4,6 +4,7 @@ namespace Snake_
 {
     public partial class Form1 : Form
     {
+        // 2750x1500
         LinkedList<Bit> SnakeBits = new LinkedList<Bit>();
         Bit FoodBit = new Bit();
         String newDirection = "Left";
@@ -14,7 +15,7 @@ namespace Snake_
             InitializeComponent();
             timer1.Start();
             initSnake();
-            initFood();
+            generateFood();
         }
         public void initSnake()
         {
@@ -23,18 +24,48 @@ namespace Snake_
             SnakeBits.AddLast(new Bit(450, 400,"Left"));
             SnakeBits.AddLast(new Bit(500, 400, "Left"));
         }
-        public void initFood()
+        public void generateFood()
         {
-            //2761x1497
+            //2750x1500
             Random rVar = new Random();
-            FoodBit.X = rVar.Next(0, 2761);
-            FoodBit.Y = rVar.Next(0, 1497);
+            FoodBit.X = 50*rVar.Next(0, 55);
+            FoodBit.Y = 50*rVar.Next(0, 30);
         }
 
         public void GameTick(object sender, EventArgs e) // Everything starts here. 
         {
             MoveSnake(newDirection);
+            CollisionCheck(SnakeBits.First.Value);
             pictureBox1.Refresh(); // This causes the picture box to update every tick of the game timer
+        }
+        public void CollisionCheck(Bit SnakeHead)
+        {
+            if(SnakeHead.X == FoodBit.X && SnakeHead.Y == FoodBit.Y)
+            {
+                // Play sound here
+                growSnake(SnakeBits);
+                generateFood();
+            }
+        }
+        public void growSnake(LinkedList<Bit> snake)
+        {
+            if(snake.Last.Value.Direction == "Left")
+            {
+                snake.AddLast(new Bit(snake.Last.Value.X + 50, snake.Last.Value.Y, "Left"));
+            }
+            else if (snake.Last.Value.Direction == "Right")
+            {
+                snake.AddLast(new Bit(snake.Last.Value.X - 50, snake.Last.Value.Y, "Right"));
+            }
+            else if (snake.Last.Value.Direction == "Up")
+            {
+                snake.AddLast(new Bit(snake.Last.Value.X, snake.Last.Value.Y + 50, "Up"));
+            }
+            else if (snake.Last.Value.Direction == "Down")
+            {
+                snake.AddLast(new Bit(snake.Last.Value.X, snake.Last.Value.Y - 50, "Down"));
+            }
+            
         }
         public void MoveSnake(string leadDirection)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake_
 {
-    class Bit // Linked List will use this class to store locations of body and head parts of snake
+    public class Bit // Linked List will use this class to store locations of body and head parts of snake
     {
         public int X { get; set; }
         public int Y { get; set; }
