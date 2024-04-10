@@ -12,12 +12,15 @@ namespace Snake_
 {
     public partial class StartupMenu : Form
     {
-        Form1 gameForm;
+        Form1 spgameForm;
+        multiPlayer mpgameForm;
         public StartupMenu()
         {
             InitializeComponent();
-            gameForm = new Form1();
-            gameForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.gameForm_gameOver);
+            spgameForm = new Form1();
+            spgameForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.spgameForm_gameOver);
+            mpgameForm = new multiPlayer();
+            mpgameForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mpgameForm_gameOver);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,7 +30,7 @@ namespace Snake_
 
         private void label2_Click(object sender, EventArgs e)
         {
-            gameForm.Show(this);
+            spgameForm.Show(this);
             this.Hide();
         }
 
@@ -42,7 +45,11 @@ namespace Snake_
             // Occurs when "Single Player" is no longer hovered over
             label2.ForeColor = Color.White;
         }
-        private void gameForm_gameOver(object sender, FormClosingEventArgs e)
+        private void spgameForm_gameOver(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        private void mpgameForm_gameOver(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
@@ -70,6 +77,12 @@ namespace Snake_
         private void KillGame(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            mpgameForm.Show(this);
+            this.Hide();
         }
     }
 }

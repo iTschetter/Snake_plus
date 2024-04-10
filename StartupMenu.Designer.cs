@@ -70,6 +70,7 @@
             this.label3.Size = new System.Drawing.Size(512, 64);
             this.label3.TabIndex = 2;
             this.label3.Text = "Multi Player";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             this.label3.MouseLeave += new System.EventHandler(this.UnhoverMP);
             this.label3.MouseHover += new System.EventHandler(this.HoverMP);
             // 

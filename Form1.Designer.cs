@@ -106,8 +106,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gameover);
             this.Controls.Add(this.pictureBox1);
+            this.MaximumSize = new System.Drawing.Size(3006, 1578);
+            this.MinimumSize = new System.Drawing.Size(3006, 1578);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.VisibleChanged += new System.EventHandler(this.initGame);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveActionDetected);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

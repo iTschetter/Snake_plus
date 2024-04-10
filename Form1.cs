@@ -14,9 +14,6 @@ namespace Snake_
         public Form1()
         {
             InitializeComponent();
-            timer1.Start();
-            initSnake();
-            generateFood();
         }
         public void initSnake()
         {
@@ -204,6 +201,16 @@ namespace Snake_
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void initGame(object sender, EventArgs e)
+        {
+            if(this.Visible == true)
+            {
+                timer1.Start();
+                initSnake();
+                generateFood();
+            }
         }
     }
 }
