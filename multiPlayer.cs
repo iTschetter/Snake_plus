@@ -26,6 +26,8 @@ namespace Snake_
         private int currentScoreB = 0;
         private bool gameFinishedA = false;
         private bool gameFinishedB = false;
+        private int playerAClock = 0;
+        private int playerBClock = 0;
         public multiPlayer()
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace Snake_
             {
                 gameTimerA.Start();
                 gameTimerB.Start();
+                playerATime.Start();
+                playerBTime.Start();
                 generateFood(FoodBitA);
                 generateFood(FoodBitB);
                 initSnake(SnakeBitsA);
@@ -301,6 +305,70 @@ namespace Snake_
                 {
                     newDirectionB = "Down";
                 }
+            }
+        }
+
+        private void playerATimerTick(object sender, EventArgs e)
+        {
+            decimal tmpMinute = 0;
+            string tmpSecond = "00";
+            playerAClock++;
+            if(playerAClock > 59)
+            {
+                tmpMinute = playerAClock / 60;
+                if(playerAClock % 60 < 10)
+                {
+                    tmpSecond = "0" + (playerAClock%60).ToString();
+                } else
+                {
+                    tmpSecond = (playerAClock%60).ToString();
+                }
+                clockA.Text = Math.Floor(tmpMinute).ToString() + ":" + tmpSecond;
+
+            } else
+            {
+                if (playerAClock % 60 < 10)
+                {
+                    tmpSecond = "0" + (playerAClock % 60).ToString();
+                }
+                else
+                {
+                    tmpSecond = (playerAClock % 60).ToString();
+                }
+                clockA.Text = "0:" + tmpSecond;
+            }
+        }
+
+        private void playerBTimerTick(object sender, EventArgs e)
+        {
+            double tmpMinute = 0;
+            string tmpSecond = "00";
+            playerBClock++;
+            if (playerBClock > 59)
+            {
+                tmpMinute = playerBClock / 60;
+                if (playerBClock % 60 < 10)
+                {
+                    tmpSecond = "0" + (playerBClock % 60).ToString();
+                }
+                else
+                {
+                    tmpSecond = (playerBClock % 60).ToString();
+                }
+                clockB.Text = Math.Floor(tmpMinute).ToString() + ":" + tmpSecond;
+
+            }
+            else
+            {
+                if (playerBClock % 60 < 10)
+                {
+                    tmpSecond = "0" + (playerBClock % 60).ToString();
+                }
+                else
+                {
+                    tmpSecond = (playerBClock % 60).ToString();
+                }
+                clockB.Text = "0:" + tmpSecond;
             }
         }
     }
