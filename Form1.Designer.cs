@@ -82,7 +82,6 @@
             this.label1.Size = new System.Drawing.Size(209, 48);
             this.label1.TabIndex = 2;
             this.label1.Text = "Score:";
-            this.label1.Visible = false;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -96,7 +95,6 @@
             this.label2.Size = new System.Drawing.Size(55, 48);
             this.label2.TabIndex = 3;
             this.label2.Text = "0";
-            this.label2.Visible = false;
             // 
             // Form1
             // 

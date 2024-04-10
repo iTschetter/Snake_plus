@@ -46,5 +46,30 @@ namespace Snake_
         {
             Application.Exit();
         }
+
+        private void HoverMP(object sender, EventArgs e)
+        {
+            label3.ForeColor = Color.DarkOliveGreen;
+        }
+
+        private void UnhoverMP(object sender, EventArgs e)
+        {
+            label3.ForeColor = Color.White;
+        }
+
+        private void HoverEG(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.DarkRed;
+        }
+
+        private void UnHoverEG(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.White;
+        }
+
+        private void KillGame(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
