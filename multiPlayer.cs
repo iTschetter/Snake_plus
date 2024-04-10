@@ -28,6 +28,8 @@ namespace Snake_
         private bool gameFinishedB = false;
         private int playerAClock = 0;
         private int playerBClock = 0;
+        private int intervalSpeedCounterA = 1;
+        private int intervalSpeedCounterB = 1;
         public multiPlayer()
         {
             InitializeComponent();
@@ -176,25 +178,46 @@ namespace Snake_
         {
             currentScoreA++;
             label3.Text = currentScoreA.ToString();
+            if(currentScoreA % 5 == 0)
+            {
+                incrementSpeed("A");
+            }
         }
         public void increaseScoreB()
         {
             currentScoreB++;
             label4.Text = currentScoreB.ToString();
+            if (currentScoreB % 5 == 0)
+            {
+                incrementSpeed("B");
+            }
+        }
+        public void incrementSpeed(string playerID)
+        {
+            if (playerID == "A" && gameTimerB.Interval > 50)
+            {
+                gameTimerB.Interval = gameTimerB.Interval - 50;
+            } 
+            else if (playerID == "B" && gameTimerA.Interval > 50)
+            {
+                gameTimerA.Interval = gameTimerA.Interval - 50;
+            } 
         }
         public void gameOver(string playerID)
         {
             if (playerID == "A")
             {
                 gameTimerA.Stop();
-                label3.ForeColor = Color.Red;
+                playerATime.Stop();
+                clockA.ForeColor = Color.Red;
                 gameOverA.Visible = true;
                 gameFinishedA = true;
             }
             else if (playerID == "B")
             {
                 gameTimerB.Stop();
-                label4.ForeColor = Color.Red;
+                playerBTime.Stop();
+                clockB.ForeColor = Color.Red;
                 gameOverB.Visible = true;
                 gameFinishedB = true;
             }
@@ -202,20 +225,20 @@ namespace Snake_
             // Final ending checks
             if (gameFinishedA == true && gameFinishedB == true)
             {
-                if(currentScoreA > currentScoreB)
+                if(playerAClock > playerBClock)
                 {
                     winnerA.Visible = true;
-                    label3.ForeColor = Color.Green;
-                } else if (currentScoreA < currentScoreB)
+                    clockA.ForeColor = Color.Green;
+                } else if (playerAClock < playerBClock)
                 {
                     winnerB.Visible = true;
-                    label4.ForeColor = Color.Green;
+                    clockB.ForeColor = Color.Green;
                 } else
                 {
                     tieA.Visible = true;
                     tieB.Visible = true;
-                    label3.ForeColor = Color.Yellow;
-                    label4.ForeColor = Color.Yellow;
+                    clockA.ForeColor = Color.Yellow;
+                    clockB.ForeColor = Color.Yellow;
                 }
 
                 gameOverPause.Start();
@@ -337,6 +360,10 @@ namespace Snake_
                 }
                 clockA.Text = "0:" + tmpSecond;
             }
+            if(playerAClock % 10 == 0 && playerBTime.Interval > 10)
+            {
+                gameTimerA.Interval = gameTimerA.Interval - 10;
+            }
         }
 
         private void playerBTimerTick(object sender, EventArgs e)
@@ -369,6 +396,10 @@ namespace Snake_
                     tmpSecond = (playerBClock % 60).ToString();
                 }
                 clockB.Text = "0:" + tmpSecond;
+            }
+            if (playerAClock % 10 == 0 && playerBTime.Interval > 10)
+            {
+                gameTimerB.Interval = gameTimerB.Interval - 10;
             }
         }
     }

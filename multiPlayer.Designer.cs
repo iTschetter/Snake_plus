@@ -163,7 +163,7 @@
             // 
             // gameOverPause
             // 
-            this.gameOverPause.Interval = 1000;
+            this.gameOverPause.Interval = 3000;
             this.gameOverPause.Tick += new System.EventHandler(this.gameOverPauseTick);
             // 
             // winnerA
