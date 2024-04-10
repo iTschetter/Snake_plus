@@ -40,12 +40,39 @@ namespace Snake_
         }
         public void CollisionCheck(Bit SnakeHead)
         {
+
+            // Checking for food and snake collision
             if(SnakeHead.X == FoodBit.X && SnakeHead.Y == FoodBit.Y)
             {
                 // Play sound here
                 growSnake(SnakeBits);
                 generateFood();
             }
+
+            // Checking for snake and border collision
+            if(SnakeHead.X < 0 || SnakeHead.Y < 0)
+            {
+                gameOver();
+            }
+            else if (SnakeHead.X > 2700 || SnakeHead.Y > 1450)
+            {
+                gameOver();
+            }
+
+            // Checking for snake on snake collision
+            foreach(Bit bit in SnakeBits.Skip(1))
+            {
+                if (bit.X == SnakeHead.X && bit.Y == SnakeHead.Y)
+                {
+                    gameOver();
+                }
+            }
+        }
+        public void gameOver()
+        {
+            timer1.Stop();
+            gameover.Visible = true;
+            gameoverPause.Start();
         }
         public void growSnake(LinkedList<Bit> snake)
         {
@@ -158,6 +185,12 @@ namespace Snake_
             {
                 newDirection = "Down";
             }
+        }
+
+        private void gameoverPauseTick(object sender, EventArgs e)
+        {
+            Owner.Show();
+            Hide();
         }
     }
 }
