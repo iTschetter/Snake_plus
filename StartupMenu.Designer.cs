@@ -66,6 +66,8 @@
             this.ClientSize = new System.Drawing.Size(2598, 1365);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(2630, 1453);
+            this.MinimumSize = new System.Drawing.Size(2630, 1453);
             this.Name = "StartupMenu";
             this.Text = "StartupMenu";
             this.ResumeLayout(false);

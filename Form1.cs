@@ -9,6 +9,7 @@ namespace Snake_
         Bit FoodBit = new Bit();
         String newDirection = "Left";
         private static int length = 50;
+        public int currentScore = 0;
 
         public Form1()
         {
@@ -46,6 +47,7 @@ namespace Snake_
             {
                 // Play sound here
                 growSnake(SnakeBits);
+                increaseScore();
                 generateFood();
             }
 
@@ -68,9 +70,15 @@ namespace Snake_
                 }
             }
         }
+        public void increaseScore()
+        {
+            currentScore++;
+            label2.Text = currentScore.ToString();
+        }
         public void gameOver()
         {
             timer1.Stop();
+            label2.ForeColor = Color.Red;
             gameover.Visible = true;
             gameoverPause.Start();
         }
@@ -172,7 +180,7 @@ namespace Snake_
             if (e.KeyCode == Keys.Left && SnakeBits.First.Value.Direction != "Right")
             {
                 newDirection = "Left";
-            }
+            } 
             if (e.KeyCode == Keys.Right && SnakeBits.First.Value.Direction != "Left")
             {
                 newDirection = "Right";
@@ -191,6 +199,11 @@ namespace Snake_
         {
             Owner.Show();
             Hide();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Snake_
 {
-    public class Bit // Linked List will use this class to store locations of body and head parts of snake
+    public class Bit // Linked List will use this class to store locations of each body part of the snake
     {
         public int X { get; set; }
         public int Y { get; set; }
         public string Direction { get; set; }
-        //public int width { get; set; }
-        //public int height { get; set; }
+
+
         public Bit()
         {
             X = 0;
