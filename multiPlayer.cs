@@ -19,8 +19,8 @@ namespace Snake_
         LinkedList<Bit> SnakeBitsB = new LinkedList<Bit>();
         Bit FoodBitA = new Bit();
         Bit FoodBitB = new Bit();
-        String newDirectionA = "Down";
-        String newDirectionB = "Down";
+        String newDirectionA = "Left";
+        String newDirectionB = "Left";
         private static int length = 25;
         private int currentScoreA = 0;
         private int currentScoreB = 0;
@@ -45,9 +45,9 @@ namespace Snake_
         public void initSnake(LinkedList<Bit> snake)
         {
             snake.Clear();
-            snake.AddFirst(new Bit(400, 400, "Down"));
-            snake.AddLast(new Bit(450, 400, "Down"));
-            snake.AddLast(new Bit(500, 400, "Down"));
+            snake.AddFirst(new Bit(400, 400, "Left"));
+            snake.AddLast(new Bit(425, 400, "Left"));
+            snake.AddLast(new Bit(450, 400, "Left"));
         }
         public void generateFood(Bit food)
         {
@@ -189,7 +189,7 @@ namespace Snake_
             }
             else if (playerID == "B")
             {
-                gameTimerA.Stop();
+                gameTimerB.Stop();
                 label4.ForeColor = Color.Red;
                 gameOverB.Visible = true;
                 gameFinishedB = true;
@@ -198,6 +198,22 @@ namespace Snake_
             // Final ending checks
             if (gameFinishedA == true && gameFinishedB == true)
             {
+                if(currentScoreA > currentScoreB)
+                {
+                    winnerA.Visible = true;
+                    label3.ForeColor = Color.Green;
+                } else if (currentScoreA < currentScoreB)
+                {
+                    winnerB.Visible = true;
+                    label4.ForeColor = Color.Green;
+                } else
+                {
+                    tieA.Visible = true;
+                    tieB.Visible = true;
+                    label3.ForeColor = Color.Yellow;
+                    label4.ForeColor = Color.Yellow;
+                }
+
                 gameOverPause.Start();
             }
         }

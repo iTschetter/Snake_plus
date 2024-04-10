@@ -40,6 +40,10 @@
             this.gameOverA = new System.Windows.Forms.Label();
             this.gameOverB = new System.Windows.Forms.Label();
             this.gameOverPause = new System.Windows.Forms.Timer(this.components);
+            this.winnerA = new System.Windows.Forms.Label();
+            this.winnerB = new System.Windows.Forms.Label();
+            this.tieA = new System.Windows.Forms.Label();
+            this.tieB = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxB)).BeginInit();
             this.SuspendLayout();
@@ -78,10 +82,12 @@
             // 
             // gameTimerA
             // 
+            this.gameTimerA.Interval = 500;
             this.gameTimerA.Tick += new System.EventHandler(this.gameTickA);
             // 
             // gameTimerB
             // 
+            this.gameTimerB.Interval = 500;
             this.gameTimerB.Tick += new System.EventHandler(this.gameTickB);
             // 
             // label2
@@ -126,11 +132,11 @@
             this.gameOverA.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gameOverA.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gameOverA.ForeColor = System.Drawing.Color.White;
-            this.gameOverA.Location = new System.Drawing.Point(206, 880);
+            this.gameOverA.Location = new System.Drawing.Point(215, 880);
             this.gameOverA.Name = "gameOverA";
-            this.gameOverA.Size = new System.Drawing.Size(986, 144);
+            this.gameOverA.Size = new System.Drawing.Size(944, 144);
             this.gameOverA.TabIndex = 8;
-            this.gameOverA.Text = "Game Over!";
+            this.gameOverA.Text = "Game Over";
             this.gameOverA.Visible = false;
             // 
             // gameOverB
@@ -139,11 +145,11 @@
             this.gameOverB.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gameOverB.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gameOverB.ForeColor = System.Drawing.Color.White;
-            this.gameOverB.Location = new System.Drawing.Point(1793, 875);
+            this.gameOverB.Location = new System.Drawing.Point(1813, 880);
             this.gameOverB.Name = "gameOverB";
-            this.gameOverB.Size = new System.Drawing.Size(986, 144);
+            this.gameOverB.Size = new System.Drawing.Size(944, 144);
             this.gameOverB.TabIndex = 9;
-            this.gameOverB.Text = "Game Over!";
+            this.gameOverB.Text = "Game Over";
             this.gameOverB.Visible = false;
             // 
             // gameOverPause
@@ -151,12 +157,68 @@
             this.gameOverPause.Interval = 1000;
             this.gameOverPause.Tick += new System.EventHandler(this.gameOverPauseTick);
             // 
+            // winnerA
+            // 
+            this.winnerA.AutoSize = true;
+            this.winnerA.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.winnerA.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.winnerA.ForeColor = System.Drawing.Color.White;
+            this.winnerA.Location = new System.Drawing.Point(300, 1069);
+            this.winnerA.Name = "winnerA";
+            this.winnerA.Size = new System.Drawing.Size(773, 144);
+            this.winnerA.TabIndex = 10;
+            this.winnerA.Text = "You Won!";
+            this.winnerA.Visible = false;
+            // 
+            // winnerB
+            // 
+            this.winnerB.AutoSize = true;
+            this.winnerB.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.winnerB.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.winnerB.ForeColor = System.Drawing.Color.White;
+            this.winnerB.Location = new System.Drawing.Point(1898, 1069);
+            this.winnerB.Name = "winnerB";
+            this.winnerB.Size = new System.Drawing.Size(773, 144);
+            this.winnerB.TabIndex = 11;
+            this.winnerB.Text = "You Won!";
+            this.winnerB.Visible = false;
+            // 
+            // tieA
+            // 
+            this.tieA.AutoSize = true;
+            this.tieA.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tieA.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tieA.ForeColor = System.Drawing.Color.White;
+            this.tieA.Location = new System.Drawing.Point(285, 1258);
+            this.tieA.Name = "tieA";
+            this.tieA.Size = new System.Drawing.Size(804, 144);
+            this.tieA.TabIndex = 12;
+            this.tieA.Text = "You Tied!";
+            this.tieA.Visible = false;
+            // 
+            // tieB
+            // 
+            this.tieB.AutoSize = true;
+            this.tieB.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tieB.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tieB.ForeColor = System.Drawing.Color.White;
+            this.tieB.Location = new System.Drawing.Point(1883, 1258);
+            this.tieB.Name = "tieB";
+            this.tieB.Size = new System.Drawing.Size(804, 144);
+            this.tieB.TabIndex = 13;
+            this.tieB.Text = "You Tied!";
+            this.tieB.Visible = false;
+            // 
             // multiPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(2974, 1902);
+            this.Controls.Add(this.tieB);
+            this.Controls.Add(this.tieA);
+            this.Controls.Add(this.winnerB);
+            this.Controls.Add(this.winnerA);
             this.Controls.Add(this.gameOverB);
             this.Controls.Add(this.gameOverA);
             this.Controls.Add(this.label4);
@@ -192,5 +254,9 @@
         public Label gameOverA;
         public Label gameOverB;
         private System.Windows.Forms.Timer gameOverPause;
+        public Label winnerA;
+        public Label winnerB;
+        public Label tieA;
+        public Label tieB;
     }
 }
