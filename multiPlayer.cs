@@ -17,8 +17,9 @@ namespace Snake_
         // 1375x1900
         LinkedList<Bit> SnakeBitsA = new LinkedList<Bit>();
         LinkedList<Bit> SnakeBitsB = new LinkedList<Bit>();
-        Bit FoodBitA = new Bit();
-        Bit FoodBitB = new Bit();
+        LinkedList<Bit> FoodBitsA = new LinkedList<Bit>();
+        LinkedList<Bit> FoodBitsB = new LinkedList<Bit>();
+
         String newDirectionA = "Left";
         String newDirectionB = "Left";
         private static int length = 25;
@@ -42,8 +43,8 @@ namespace Snake_
                 gameTimerB.Start();
                 playerATime.Start();
                 playerBTime.Start();
-                generateFood(FoodBitA);
-                generateFood(FoodBitB);
+                initFood(FoodBitsA);
+                initFood(FoodBitsB);
                 initSnake(SnakeBitsA);
                 initSnake(SnakeBitsB);
             }
@@ -55,24 +56,29 @@ namespace Snake_
             snake.AddLast(new Bit(425, 400, "Left"));
             snake.AddLast(new Bit(450, 400, "Left"));
         }
-        public void generateFood(Bit food)
+        public void initFood(LinkedList<Bit> food)
         {
             //1375x1900
             Random rVar = new Random();
-            food.X = 25 * rVar.Next(0, 55);
-            food.Y = 25 * rVar.Next(0, 76);
+            food.AddFirst(new Bit(25 * rVar.Next(0, 55), 25 * rVar.Next(0, 76)));
+        }
+        public void generateFood(LinkedList<Bit> food)
+        {
+            //1375x1900
+            Random rVar = new Random();
+            food.AddLast(new Bit(25 * rVar.Next(0, 55), 25 * rVar.Next(0, 76)));
         }
         private void gameTickA(object sender, EventArgs e)
         {
             MoveSnake(SnakeBitsA, newDirectionA);
-            CollisionCheck(SnakeBitsA, FoodBitA,"A");
+            CollisionCheck(SnakeBitsA, FoodBitsA,"A");
             pictureBoxA.Refresh(); // This causes the picture box to update every tick of the game timer
         }
 
         private void gameTickB(object sender, EventArgs e)
         {
             MoveSnake(SnakeBitsB, newDirectionB);
-            CollisionCheck(SnakeBitsB, FoodBitB,"B");
+            CollisionCheck(SnakeBitsB, FoodBitsB,"B");
             pictureBoxB.Refresh(); // This causes the picture box to update every tick of the game timer
         }
         public void MoveSnake(LinkedList<Bit> snake, string leadDirection)
@@ -116,25 +122,29 @@ namespace Snake_
                 }
             }
         }
-        public void CollisionCheck(LinkedList<Bit> snake, Bit food, string playerID)
+        public void CollisionCheck(LinkedList<Bit> snake, LinkedList<Bit> food, string playerID)
         {
             Bit SnakeHead = snake.First.Value;
             // Checking for food and snake collision
-            if (SnakeHead.X == food.X && SnakeHead.Y == food.Y)
+            foreach(Bit foodBit in food)
             {
-                // Play sound here
-                growSnake(snake);
-                if (playerID == "A")
+                if (SnakeHead.X == foodBit.X && SnakeHead.Y == foodBit.Y)
                 {
-                    increaseScoreA();
+                    // Play sound here
+                    growSnake(snake);
+                    if (playerID == "A")
+                    {
+                        increaseScoreA();
+                    }
+                    else if (playerID == "B")
+                    {
+                        increaseScoreB();
+                    }
+                    food.Remove(foodBit);
+                    generateFood(food);
+                    break;
                 }
-                else if (playerID == "B")
-                {
-                    increaseScoreB();
-                }
-                generateFood(food);
             }
-
             // Checking for snake and border collision
             if (SnakeHead.X < 0 || SnakeHead.Y < 0)
             {
@@ -254,13 +264,13 @@ namespace Snake_
         private void paintFrameA(object sender, PaintEventArgs e)
         {
             PaintSnake(pictureBoxA, SnakeBitsA, e);
-            PaintFood(pictureBoxA, FoodBitA, e);
+            PaintFood(pictureBoxA, FoodBitsA, e);
         }
 
         private void paintFrameB(object sender, PaintEventArgs e)
         {
             PaintSnake(pictureBoxB, SnakeBitsB, e);
-            PaintFood(pictureBoxB, FoodBitB, e);
+            PaintFood(pictureBoxB, FoodBitsB, e);
         }
         public void PaintSnake(PictureBox pictureBox, LinkedList<Bit> snake, PaintEventArgs e)
         {
@@ -277,15 +287,18 @@ namespace Snake_
             }
 
         }
-        public void PaintFood(PictureBox pictureBox, Bit food, PaintEventArgs e)
+        public void PaintFood(PictureBox pictureBox, LinkedList<Bit> food, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             var penMaster = new Pen(Color.DarkOliveGreen, 4);
             var brushMaster = new SolidBrush(Color.DarkOliveGreen);
 
-            Rectangle tmp = new Rectangle(food.X, food.Y, length, length);
-            g.DrawRectangle(penMaster, tmp);
-            g.FillRectangle(brushMaster, tmp);
+            foreach (Bit foodBit in food)
+            {
+                Rectangle tmp = new Rectangle(foodBit.X, foodBit.Y, length, length);
+                g.DrawRectangle(penMaster, tmp);
+                g.FillRectangle(brushMaster, tmp);
+            }
         }
 
         private void MoveActionDetected(object sender, KeyEventArgs e)
@@ -336,7 +349,8 @@ namespace Snake_
             decimal tmpMinute = 0;
             string tmpSecond = "00";
             playerAClock++;
-            if(playerAClock > 59)
+
+            if(playerAClock > 59) // Incrementing Timer
             {
                 tmpMinute = playerAClock / 60;
                 if(playerAClock % 60 < 10)
@@ -360,10 +374,16 @@ namespace Snake_
                 }
                 clockA.Text = "0:" + tmpSecond;
             }
-            if(playerAClock % 10 == 0 && playerBTime.Interval > 10)
+
+            if(playerAClock % 10 == 0 && gameTimerA.Interval > 10) // Checking for speed incrementation
             {
                 gameTimerA.Interval = gameTimerA.Interval - 10;
+                generateFood(FoodBitsA);
             }
+            //if(playerAClock % 5 == 0)
+            //{
+            //    generateFood(FoodBitsA);
+            //}
         }
 
         private void playerBTimerTick(object sender, EventArgs e)
@@ -371,7 +391,8 @@ namespace Snake_
             double tmpMinute = 0;
             string tmpSecond = "00";
             playerBClock++;
-            if (playerBClock > 59)
+
+            if (playerBClock > 59) // Incrementing Timer
             {
                 tmpMinute = playerBClock / 60;
                 if (playerBClock % 60 < 10)
@@ -397,10 +418,16 @@ namespace Snake_
                 }
                 clockB.Text = "0:" + tmpSecond;
             }
-            if (playerAClock % 10 == 0 && playerBTime.Interval > 10)
+
+            if (playerBClock % 10 == 0 && gameTimerB.Interval > 10) // Checking for speed incrementation
             {
                 gameTimerB.Interval = gameTimerB.Interval - 10;
+                generateFood(FoodBitsB);
             }
+            //if(playerBClock % 5 == 0)
+            //{
+            //    generateFood(FoodBitsB);
+            //}
         }
     }
 }

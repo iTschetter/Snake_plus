@@ -19,6 +19,12 @@ namespace Snake_
             Y = 0;
             Direction = "Null";
         }
+        public Bit(int x, int y)
+        {
+            X = x;
+            Y = y;
+            Direction = "Null";
+        }
         public Bit(int x, int y, string direction)
         {
             X = x;
