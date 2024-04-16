@@ -380,10 +380,6 @@ namespace Snake_
                 gameTimerA.Interval = gameTimerA.Interval - 10;
                 generateFood(FoodBitsA);
             }
-            //if(playerAClock % 5 == 0)
-            //{
-            //    generateFood(FoodBitsA);
-            //}
         }
 
         private void playerBTimerTick(object sender, EventArgs e)
@@ -424,10 +420,6 @@ namespace Snake_
                 gameTimerB.Interval = gameTimerB.Interval - 10;
                 generateFood(FoodBitsB);
             }
-            //if(playerBClock % 5 == 0)
-            //{
-            //    generateFood(FoodBitsB);
-            //}
         }
     }
 }

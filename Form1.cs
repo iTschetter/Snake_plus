@@ -194,6 +194,7 @@ namespace Snake_
 
         private void gameoverPauseTick(object sender, EventArgs e)
         {
+            // if finalScore if greater than last place on leaderboards, prompt new database entry
             Owner.Show();
             Hide();
         }

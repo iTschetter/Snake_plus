@@ -14,6 +14,7 @@ namespace Snake_
     {
         Form1 spgameForm;
         multiPlayer mpgameForm;
+        Leaderboard lboardForm;
         public StartupMenu()
         {
             InitializeComponent();
@@ -21,6 +22,8 @@ namespace Snake_
             spgameForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.spgameForm_gameOver);
             mpgameForm = new multiPlayer();
             mpgameForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mpgameForm_gameOver);
+            lboardForm = new Leaderboard();
+            lboardForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.lboardForm_gameOver);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -50,6 +53,10 @@ namespace Snake_
             Application.Exit();
         }
         private void mpgameForm_gameOver(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        private void lboardForm_gameOver(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
@@ -83,6 +90,21 @@ namespace Snake_
         {
             mpgameForm.Show(this);
             this.Hide();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbHover(object sender, EventArgs e)
+        {
+            label5.ForeColor = Color.DarkOliveGreen;
+        }
+
+        private void lbUnHover(object sender, EventArgs e)
+        {
+            label5.ForeColor = Color.White;
         }
     }
 }
