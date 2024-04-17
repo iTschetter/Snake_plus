@@ -51,10 +51,13 @@ namespace Snake_
         private void spgameForm_gameOver(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+            spgameForm = new Form1();
+            lboardForm.refreshLeaderboard();
         }
         private void mpgameForm_gameOver(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+            mpgameForm = new multiPlayer();
         }
         private void lboardForm_gameOver(object sender, FormClosingEventArgs e)
         {

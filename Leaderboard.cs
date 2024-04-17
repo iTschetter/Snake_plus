@@ -12,8 +12,8 @@ namespace Snake_
 {
     public partial class Leaderboard : Form
     {
-        DatabaseEntryDAO dbAccessObject = new DatabaseEntryDAO();
-        List<DatabaseEntry> dbEntries = new List<DatabaseEntry>();
+        public DatabaseEntryDAO dbAccessObject = new DatabaseEntryDAO();
+        public List<DatabaseEntry> dbEntries = new List<DatabaseEntry>();
         public Leaderboard()
         {
             InitializeComponent(); // init
@@ -79,9 +79,15 @@ namespace Snake_
                         n5.Location = new Point(tmpX, tmpY);
 
                         s5.Text = dbEntry.Score.ToString();
+                        //lastPlace = dbEntry.Score; // Saving for later
+
                         break;
                 }
             }
+        }
+        public void refreshLeaderboard()
+        {
+            displayDBEntries();
         }
         private void label5_Click(object sender, EventArgs e)
         {

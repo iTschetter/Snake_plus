@@ -35,6 +35,10 @@
             this.gameoverPause = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.hs = new System.Windows.Forms.Label();
+            this.hsName = new System.Windows.Forms.Label();
+            this.hsNameVal = new System.Windows.Forms.TextBox();
+            this.submitB = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +54,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.GameTick);
             // 
             // gameover
@@ -96,12 +100,69 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "0";
             // 
+            // hs
+            // 
+            this.hs.AutoSize = true;
+            this.hs.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.hs.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hs.ForeColor = System.Drawing.Color.Gold;
+            this.hs.Location = new System.Drawing.Point(938, 706);
+            this.hs.Name = "hs";
+            this.hs.Size = new System.Drawing.Size(1329, 144);
+            this.hs.TabIndex = 4;
+            this.hs.Text = "New High Score";
+            this.hs.Visible = false;
+            // 
+            // hsName
+            // 
+            this.hsName.AutoSize = true;
+            this.hsName.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.hsName.Font = new System.Drawing.Font("ROG Fonts", 20.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hsName.ForeColor = System.Drawing.Color.White;
+            this.hsName.Location = new System.Drawing.Point(938, 912);
+            this.hsName.Name = "hsName";
+            this.hsName.Size = new System.Drawing.Size(294, 80);
+            this.hsName.TabIndex = 5;
+            this.hsName.Text = "Name:";
+            this.hsName.Visible = false;
+            // 
+            // hsNameVal
+            // 
+            this.hsNameVal.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.hsNameVal.Font = new System.Drawing.Font("Segoe UI", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hsNameVal.ForeColor = System.Drawing.Color.White;
+            this.hsNameVal.Location = new System.Drawing.Point(1224, 922);
+            this.hsNameVal.Name = "hsNameVal";
+            this.hsNameVal.Size = new System.Drawing.Size(1043, 78);
+            this.hsNameVal.TabIndex = 6;
+            this.hsNameVal.Visible = false;
+            // 
+            // submitB
+            // 
+            this.submitB.AutoSize = true;
+            this.submitB.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.submitB.Font = new System.Drawing.Font("ROG Fonts", 20.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.submitB.ForeColor = System.Drawing.Color.White;
+            this.submitB.Location = new System.Drawing.Point(1425, 1062);
+            this.submitB.Name = "submitB";
+            this.submitB.Size = new System.Drawing.Size(354, 80);
+            this.submitB.TabIndex = 7;
+            this.submitB.Text = "Submit";
+            this.submitB.Visible = false;
+            this.submitB.Click += new System.EventHandler(this.submitDBEntry);
+            this.submitB.MouseLeave += new System.EventHandler(this.UnHoverSubmit);
+            this.submitB.MouseHover += new System.EventHandler(this.HoverSubmit);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(2974, 1490);
+            this.Controls.Add(this.submitB);
+            this.Controls.Add(this.hsNameVal);
+            this.Controls.Add(this.hsName);
+            this.Controls.Add(this.hs);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gameover);
@@ -126,5 +187,9 @@
         public System.Windows.Forms.Timer gameoverPause;
         public Label label1;
         public Label label2;
+        public Label hs;
+        public Label hsName;
+        private TextBox hsNameVal;
+        public Label submitB;
     }
 }

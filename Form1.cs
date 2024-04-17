@@ -10,7 +10,7 @@ namespace Snake_
         String newDirection = "Left";
         private static int length = 50;
         public int currentScore = 0;
-
+        DatabaseEntryDAO DAO = new DatabaseEntryDAO();
         public Form1()
         {
             InitializeComponent();
@@ -77,7 +77,22 @@ namespace Snake_
             timer1.Stop();
             label2.ForeColor = Color.Red;
             gameover.Visible = true;
-            gameoverPause.Start();
+            if(currentScore > DAO.getLastPlace()) // int.Parse(lboardForm.s5.Text))
+            {
+                newHighScore();
+                
+            } else if (currentScore <= DAO.getLastPlace())
+            {
+                gameoverPause.Start();
+            }
+        }
+        public void newHighScore()
+        {
+            // Grabbing Name:
+            hs.Visible = true;
+            hsName.Visible = true;
+            hsNameVal.Visible = true;
+            submitB.Visible = true;
         }
         public void growSnake(LinkedList<Bit> snake)
         {
@@ -194,9 +209,11 @@ namespace Snake_
 
         private void gameoverPauseTick(object sender, EventArgs e)
         {
-            // if finalScore if greater than last place on leaderboards, prompt new database entry
-
+            currentScore = 0;
+            gameoverPause.Stop();
             Owner.Show();
+            Controls.Clear();
+            this.InitializeComponent();
             Hide();
         }
 
@@ -213,6 +230,31 @@ namespace Snake_
                 initSnake();
                 generateFood();
             }
+        }
+
+        private void HoverSubmit(object sender, EventArgs e)
+        {
+            if(submitB.Visible == true)
+            {
+                submitB.ForeColor = Color.Gold;
+            }
+        }
+
+        private void UnHoverSubmit(object sender, EventArgs e)
+        {
+            if (submitB.Visible == true)
+            {
+                submitB.ForeColor = Color.White;
+            }
+        }
+
+        private void submitDBEntry(object sender, EventArgs e)
+        {
+            DAO.updateDBEntries(currentScore, hsNameVal.Text);
+            //lboardForm.refreshLeaderboard();
+
+            // Then resume normal closing of form:
+            gameoverPause.Start();
         }
     }
 }

@@ -257,7 +257,12 @@ namespace Snake_
 
         private void gameOverPauseTick(object sender, EventArgs e)
         {
+            currentScoreA = 0;
+            currentScoreB = 0;
+            gameOverPause.Stop();
             Owner.Show();
+            Controls.Clear();
+            this.InitializeComponent();
             Hide();
         }
 
