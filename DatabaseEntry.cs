@@ -11,6 +11,12 @@ namespace Snake_
         public string Name { get; set; }
         public int Score { get; set; }
         public int Rank { get; set; }
+        public DatabaseEntry()
+        {
+            Name = string.Empty;
+            Score = 0;
+            Rank = 0;
+        }
         public DatabaseEntry(string name, int score, int rank)
         {
             Name = name;
