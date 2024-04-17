@@ -9,7 +9,7 @@ namespace Snake_
 {
     internal class DatabaseEntryDAO
     {
-        string connectionString = "datasource=localhost;port=3306;username=root;password=root;database=highscoree;";
+        string connectionString = "datasource=localhost;port=3306;username=root;password=root;database=leaderboard;";
 
         public List<DatabaseEntry> getDBEntries()
         {

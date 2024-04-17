@@ -94,7 +94,8 @@ namespace Snake_
 
         private void label5_Click(object sender, EventArgs e)
         {
-
+            lboardForm.Show(this);
+            this.Hide();
         }
 
         private void lbHover(object sender, EventArgs e)
