@@ -341,7 +341,7 @@
             this.MaximumSize = new System.Drawing.Size(3006, 1990);
             this.MinimumSize = new System.Drawing.Size(3006, 1990);
             this.Name = "multiPlayer";
-            this.Text = "multiPlayer";
+            this.Text = "Snake+";
             this.VisibleChanged += new System.EventHandler(this.initGame);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveActionDetected);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxA)).EndInit();

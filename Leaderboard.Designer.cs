@@ -259,6 +259,7 @@
             this.s5.Size = new System.Drawing.Size(73, 64);
             this.s5.TabIndex = 21;
             this.s5.Text = "0";
+            this.s5.VisibleChanged += new System.EventHandler(this.openingForm);
             // 
             // label6
             // 
@@ -303,7 +304,7 @@
             this.MaximumSize = new System.Drawing.Size(2800, 1550);
             this.MinimumSize = new System.Drawing.Size(2800, 1550);
             this.Name = "Leaderboard";
-            this.Text = "Leaderboard";
+            this.Text = "Snake+";
             this.ResumeLayout(false);
             this.PerformLayout();
 

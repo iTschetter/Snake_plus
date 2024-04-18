@@ -209,6 +209,7 @@ namespace Snake_
 
         private void gameoverPauseTick(object sender, EventArgs e)
         {
+            newDirection = "left";
             currentScore = 0;
             gameoverPause.Stop();
             Owner.Show();

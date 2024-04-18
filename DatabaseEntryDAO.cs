@@ -68,7 +68,7 @@ namespace Snake_
 
             MySqlConnection dbConnection = new MySqlConnection(connectionString);
             dbConnection.Open();
-            MySqlCommand deleteEntries = new MySqlCommand("DELETE * FROM HIGHSCOREE", dbConnection);
+            MySqlCommand deleteEntries = new MySqlCommand("DELETE FROM HIGHSCOREE", dbConnection);
 
             deleteEntries.ExecuteNonQuery();
             dbConnection.Close();
@@ -85,7 +85,8 @@ namespace Snake_
 
             foreach(DatabaseEntry entry in dbEntries)
             {
-                insertEntry.Parameters.AddWithValue("@name", entry.Name);
+                insertEntry.Parameters.Clear();
+                insertEntry.Parameters.AddWithValue("@name", entry.Name.ToString());
                 insertEntry.Parameters.AddWithValue("@score", entry.Score);
                 insertEntry.Parameters.AddWithValue("@rank", entry.Rank);
                 insertEntry.ExecuteNonQuery();

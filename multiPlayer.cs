@@ -259,6 +259,8 @@ namespace Snake_
         {
             currentScoreA = 0;
             currentScoreB = 0;
+            newDirectionA = "left";
+            newDirectionB = "left";
             gameOverPause.Stop();
             Owner.Show();
             Controls.Clear();

@@ -52,7 +52,7 @@ namespace Snake_
         {
             Application.Exit();
             spgameForm = new Form1();
-            lboardForm.refreshLeaderboard();
+            //lboardForm.refreshLeaderboard();
         }
         private void mpgameForm_gameOver(object sender, FormClosingEventArgs e)
         {

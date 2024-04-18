@@ -117,7 +117,7 @@
             this.MaximumSize = new System.Drawing.Size(2630, 1453);
             this.MinimumSize = new System.Drawing.Size(2630, 1453);
             this.Name = "StartupMenu";
-            this.Text = "StartupMenu";
+            this.Text = "Snake+";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -54,7 +54,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 500;
+            this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.GameTick);
             // 
             // gameover
@@ -131,9 +131,9 @@
             this.hsNameVal.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.hsNameVal.Font = new System.Drawing.Font("Segoe UI", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.hsNameVal.ForeColor = System.Drawing.Color.White;
-            this.hsNameVal.Location = new System.Drawing.Point(1224, 922);
+            this.hsNameVal.Location = new System.Drawing.Point(1238, 922);
             this.hsNameVal.Name = "hsNameVal";
-            this.hsNameVal.Size = new System.Drawing.Size(1043, 78);
+            this.hsNameVal.Size = new System.Drawing.Size(1029, 78);
             this.hsNameVal.TabIndex = 6;
             this.hsNameVal.Visible = false;
             // 
@@ -170,7 +170,7 @@
             this.MaximumSize = new System.Drawing.Size(3006, 1578);
             this.MinimumSize = new System.Drawing.Size(3006, 1578);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Snake+";
             this.VisibleChanged += new System.EventHandler(this.initGame);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveActionDetected);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -87,6 +87,7 @@ namespace Snake_
         }
         public void refreshLeaderboard()
         {
+            dbEntries = dbAccessObject.getDBEntries();
             displayDBEntries();
         }
         private void label5_Click(object sender, EventArgs e)
@@ -109,6 +110,14 @@ namespace Snake_
             label6.ForeColor = Color.DarkRed;
             Owner.Show();
             Hide();
+        }
+
+        private void openingForm(object sender, EventArgs e)
+        {
+            if(this.Visible == true)
+            {
+                refreshLeaderboard();
+            }
         }
     }
 }
