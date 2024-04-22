@@ -63,11 +63,11 @@
             this.gameover.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gameover.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gameover.ForeColor = System.Drawing.Color.White;
-            this.gameover.Location = new System.Drawing.Point(1104, 500);
+            this.gameover.Location = new System.Drawing.Point(1125, 500);
             this.gameover.Name = "gameover";
-            this.gameover.Size = new System.Drawing.Size(986, 144);
+            this.gameover.Size = new System.Drawing.Size(944, 144);
             this.gameover.TabIndex = 1;
-            this.gameover.Text = "Game Over!";
+            this.gameover.Text = "Game Over";
             this.gameover.Visible = false;
             // 
             // gameoverPause
@@ -106,11 +106,11 @@
             this.hs.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.hs.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.hs.ForeColor = System.Drawing.Color.Gold;
-            this.hs.Location = new System.Drawing.Point(938, 706);
+            this.hs.Location = new System.Drawing.Point(912, 680);
             this.hs.Name = "hs";
-            this.hs.Size = new System.Drawing.Size(1329, 144);
+            this.hs.Size = new System.Drawing.Size(1371, 144);
             this.hs.TabIndex = 4;
-            this.hs.Text = "New High Score";
+            this.hs.Text = "New High Score!";
             this.hs.Visible = false;
             // 
             // hsName
@@ -119,7 +119,7 @@
             this.hsName.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.hsName.Font = new System.Drawing.Font("ROG Fonts", 20.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.hsName.ForeColor = System.Drawing.Color.White;
-            this.hsName.Location = new System.Drawing.Point(938, 912);
+            this.hsName.Location = new System.Drawing.Point(912, 900);
             this.hsName.Name = "hsName";
             this.hsName.Size = new System.Drawing.Size(294, 80);
             this.hsName.TabIndex = 5;
@@ -131,9 +131,9 @@
             this.hsNameVal.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.hsNameVal.Font = new System.Drawing.Font("Segoe UI", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.hsNameVal.ForeColor = System.Drawing.Color.White;
-            this.hsNameVal.Location = new System.Drawing.Point(1238, 922);
+            this.hsNameVal.Location = new System.Drawing.Point(1207, 900);
             this.hsNameVal.Name = "hsNameVal";
-            this.hsNameVal.Size = new System.Drawing.Size(1029, 78);
+            this.hsNameVal.Size = new System.Drawing.Size(1076, 78);
             this.hsNameVal.TabIndex = 6;
             this.hsNameVal.Visible = false;
             // 

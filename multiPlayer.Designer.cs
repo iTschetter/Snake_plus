@@ -171,7 +171,7 @@
             this.winnerA.AutoSize = true;
             this.winnerA.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.winnerA.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.winnerA.ForeColor = System.Drawing.Color.White;
+            this.winnerA.ForeColor = System.Drawing.Color.Gold;
             this.winnerA.Location = new System.Drawing.Point(300, 1069);
             this.winnerA.Name = "winnerA";
             this.winnerA.Size = new System.Drawing.Size(773, 144);
@@ -184,7 +184,7 @@
             this.winnerB.AutoSize = true;
             this.winnerB.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.winnerB.Font = new System.Drawing.Font("ROG Fonts", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.winnerB.ForeColor = System.Drawing.Color.White;
+            this.winnerB.ForeColor = System.Drawing.Color.Gold;
             this.winnerB.Location = new System.Drawing.Point(1898, 1069);
             this.winnerB.Name = "winnerB";
             this.winnerB.Size = new System.Drawing.Size(773, 144);
