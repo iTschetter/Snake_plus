@@ -20,8 +20,10 @@ namespace Snake_
             InitializeComponent();
             spgameForm = new Form1();
             spgameForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.spgameForm_gameOver);
+            spgameForm.VisibleChanged += new EventHandler(this.spgameForm_visibleChanged);
             mpgameForm = new multiPlayer();
             mpgameForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mpgameForm_gameOver);
+            mpgameForm.VisibleChanged += new EventHandler(this.mpgameForm_visibleChanged);
             lboardForm = new Leaderboard();
             lboardForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.lboardForm_gameOver);
         }
@@ -29,6 +31,20 @@ namespace Snake_
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        public void spgameForm_visibleChanged(object sender, EventArgs e)
+        {
+            if(spgameForm.Visible == false)
+            {
+               spgameForm.resetGame();
+            }
+        }
+        public void mpgameForm_visibleChanged(Object sender, EventArgs e)
+        {
+            if (spgameForm.Visible == false)
+            {
+                mpgameForm.resetGame();
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

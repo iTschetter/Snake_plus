@@ -20,8 +20,8 @@ namespace Snake_
         LinkedList<Bit> FoodBitsA = new LinkedList<Bit>();
         LinkedList<Bit> FoodBitsB = new LinkedList<Bit>();
 
-        String newDirectionA = "Left";
-        String newDirectionB = "Left";
+        String newDirectionA = "Down";
+        String newDirectionB = "Down";
         private static int length = 25;
         private int currentScoreA = 0;
         private int currentScoreB = 0;
@@ -29,11 +29,45 @@ namespace Snake_
         private bool gameFinishedB = false;
         private int playerAClock = 0;
         private int playerBClock = 0;
-        private int intervalSpeedCounterA = 1;
-        private int intervalSpeedCounterB = 1;
+        //private int intervalSpeedCounterA = 1;
+        //private int intervalSpeedCounterB = 1;
         public multiPlayer()
         {
             InitializeComponent();
+        }
+        public void resetGame()
+        {
+            // Couldn't find a better method for reseting things :/
+            gameFinishedA = false;
+            gameFinishedB = false;
+            currentScoreA = 0;
+            currentScoreB = 0;
+            gameOverPause.Stop();
+            initFood(FoodBitsA);
+            initFood(FoodBitsB);
+            initSnake(SnakeBitsA);
+            initSnake(SnakeBitsB);
+            playerAClock = 0;
+            playerBClock = 0;
+            newDirectionA = "Down";
+            newDirectionB = "Down";
+            gameFinishedA = false;
+            gameFinishedB = false;
+            gameOverA.Visible = false;
+            gameOverB.Visible = false;
+            winnerA.Visible = false;
+            winnerB.Visible = false;
+            tieA.Visible = false;
+            tieB.Visible = false;
+            clockA.ForeColor= Color.White;
+            clockB.ForeColor= Color.White;
+            clockA.Text = "0:00";
+            clockB.Text = "0:00";
+            label3.Text = "0";
+            label4.Text = "0";
+            playerATime.Interval = 1000;
+            playerBTime.Interval = 1000;
+
         }
         private void initGame(object sender, EventArgs e)
         {
@@ -52,9 +86,9 @@ namespace Snake_
         public void initSnake(LinkedList<Bit> snake)
         {
             snake.Clear();
-            snake.AddFirst(new Bit(400, 400, "Left"));
-            snake.AddLast(new Bit(425, 400, "Left"));
-            snake.AddLast(new Bit(450, 400, "Left"));
+            snake.AddFirst(new Bit(400, 400, "Down"));
+            snake.AddLast(new Bit(400, 375, "Down"));
+            snake.AddLast(new Bit(400, 350, "Down"));
         }
         public void initFood(LinkedList<Bit> food)
         {

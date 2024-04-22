@@ -1,3 +1,4 @@
+using Org.BouncyCastle.Asn1.BC;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Snake_
@@ -7,7 +8,7 @@ namespace Snake_
         // 2750x1500
         LinkedList<Bit> SnakeBits = new LinkedList<Bit>();
         Bit FoodBit = new Bit();
-        String newDirection = "Left";
+        String newDirection = "Down";
         private static int length = 50;
         public int currentScore = 0;
         DatabaseEntryDAO DAO = new DatabaseEntryDAO();
@@ -18,9 +19,9 @@ namespace Snake_
         public void initSnake()
         {
             SnakeBits.Clear();
-            SnakeBits.AddFirst(new Bit(400, 400,"Left"));
-            SnakeBits.AddLast(new Bit(450, 400,"Left"));
-            SnakeBits.AddLast(new Bit(500, 400, "Left"));
+            SnakeBits.AddFirst(new Bit(400, 400,"Down"));
+            SnakeBits.AddLast(new Bit(400, 350, "Down"));
+            SnakeBits.AddLast(new Bit(400, 300, "Down"));
         }
         public void generateFood()
         {
@@ -208,16 +209,31 @@ namespace Snake_
         }
 
         private void gameoverPauseTick(object sender, EventArgs e)
-        {
-            newDirection = "left";
-            currentScore = 0;
-            gameoverPause.Stop();
+        {          
             Owner.Show();
-            Controls.Clear();
-            this.InitializeComponent();
             Hide();
         }
+        public void resetGame()
+        {
+            // Couldn't find a better method for reseting things :/
 
+            // Reseting vars and controls:
+            currentScore = 0;
+            gameoverPause.Stop();
+
+            initSnake();
+            generateFood();
+
+            label2.ForeColor= Color.White;
+            label2.Text = "0";
+            hs.Visible = false;
+            gameover.Visible = false;
+            hsName.Visible = false;
+            hsNameVal.Visible = false;
+            hsName.Text = "";
+            submitB.Visible = false;
+            newDirection = "Down";
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
