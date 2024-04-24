@@ -1,4 +1,5 @@
 using Org.BouncyCastle.Asn1.BC;
+using System.Media;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Snake_
@@ -12,9 +13,18 @@ namespace Snake_
         private static int length = 50;
         public int currentScore = 0;
         DatabaseEntryDAO DAO = new DatabaseEntryDAO();
+        public SoundPlayer foodCollected;
+        public SoundPlayer gameFinished;
+        public SoundPlayer gameBegin;
         public Form1()
         {
             InitializeComponent();
+            foodCollected = new SoundPlayer(Properties.Resources.foodCollected);
+            gameFinished = new SoundPlayer(Properties.Resources.gameFinished);
+            gameBegin = new SoundPlayer(Properties.Resources.gameBegin);
+            foodCollected.Load();
+            gameFinished.Load();
+            gameBegin.Load();
         }
         public void initSnake()
         {
@@ -70,11 +80,13 @@ namespace Snake_
         }
         public void increaseScore()
         {
+            foodCollected.Play();
             currentScore++;
             label2.Text = currentScore.ToString();
         }
         public void gameOver()
         {
+            gameFinished.Play();
             timer1.Stop();
             label2.ForeColor = Color.Red;
             gameover.Visible = true;
@@ -243,6 +255,7 @@ namespace Snake_
         {
             if(this.Visible == true)
             {
+                gameBegin.Play();
                 timer1.Start();
                 initSnake();
                 generateFood();

@@ -72,7 +72,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("ROG Fonts", 9.45001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.label1.Location = new System.Drawing.Point(1377, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 38);
@@ -104,7 +104,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
             this.label2.Location = new System.Drawing.Point(1381, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 48);
@@ -233,7 +233,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label5.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.ForeColor = System.Drawing.Color.DarkRed;
             this.label5.Location = new System.Drawing.Point(1381, 195);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(207, 48);
@@ -269,7 +269,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label8.Font = new System.Drawing.Font("ROG Fonts", 9.15001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.label8.Location = new System.Drawing.Point(1377, 344);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(220, 37);
@@ -293,7 +293,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label10.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.ForeColor = System.Drawing.Color.DarkRed;
             this.label10.Location = new System.Drawing.Point(1381, 469);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(139, 48);
@@ -305,7 +305,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label11.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.DarkRed;
             this.label11.Location = new System.Drawing.Point(1381, 530);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(207, 48);

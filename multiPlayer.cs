@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,23 @@ namespace Snake_
         private bool gameFinishedB = false;
         private int playerAClock = 0;
         private int playerBClock = 0;
-        //private int intervalSpeedCounterA = 1;
-        //private int intervalSpeedCounterB = 1;
+        private int speedIncrementA = 50;
+        private int speedIncrementB = 50;
+        public SoundPlayer foodCollected;
+        public SoundPlayer gameFinished;
+        public SoundPlayer gameBegin;
+        public SoundPlayer speedIncrease;
         public multiPlayer()
         {
             InitializeComponent();
+            foodCollected = new SoundPlayer(Properties.Resources.foodCollected);
+            gameFinished = new SoundPlayer(Properties.Resources.gameFinished);
+            gameBegin = new SoundPlayer(Properties.Resources.gameBegin);
+            speedIncrease = new SoundPlayer(Properties.Resources.speedIncrease);
+            foodCollected.Load();
+            gameFinished.Load();
+            gameBegin.Load();
+            speedIncrease.Load();
         }
         public void resetGame()
         {
@@ -73,6 +86,7 @@ namespace Snake_
         {
             if (this.Visible == true)
             {
+                gameBegin.Play();
                 gameTimerA.Start();
                 gameTimerB.Start();
                 playerATime.Start();
@@ -93,6 +107,7 @@ namespace Snake_
         public void initFood(LinkedList<Bit> food)
         {
             //1375x1900
+            food.Clear();
             Random rVar = new Random();
             food.AddFirst(new Bit(25 * rVar.Next(0, 55), 25 * rVar.Next(0, 76)));
         }
@@ -164,7 +179,6 @@ namespace Snake_
             {
                 if (SnakeHead.X == foodBit.X && SnakeHead.Y == foodBit.Y)
                 {
-                    // Play sound here
                     growSnake(snake);
                     if (playerID == "A")
                     {
@@ -220,6 +234,7 @@ namespace Snake_
         }
         public void increaseScoreA()
         {
+            foodCollected.Play();
             currentScoreA++;
             label3.Text = currentScoreA.ToString();
             if(currentScoreA % 5 == 0)
@@ -229,6 +244,7 @@ namespace Snake_
         }
         public void increaseScoreB()
         {
+            foodCollected.Play();
             currentScoreB++;
             label4.Text = currentScoreB.ToString();
             if (currentScoreB % 5 == 0)
@@ -238,17 +254,28 @@ namespace Snake_
         }
         public void incrementSpeed(string playerID)
         {
-            if (playerID == "A" && gameTimerB.Interval > 50)
+            if (playerID == "A" && gameTimerB.Interval > 10)
             {
-                gameTimerB.Interval = gameTimerB.Interval - 50;
+                gameTimerB.Interval = gameTimerB.Interval - speedIncrementB;
+                if(gameTimerB.Interval <= 50 && speedIncrementB == 50)
+                {
+                    speedIncrementB = 10;
+                }
+                speedIncrease.Play();
             } 
-            else if (playerID == "B" && gameTimerA.Interval > 50)
+            else if (playerID == "B" && gameTimerA.Interval > 10)
             {
-                gameTimerA.Interval = gameTimerA.Interval - 50;
+                gameTimerA.Interval = gameTimerA.Interval - speedIncrementA;
+                if (gameTimerA.Interval <= 50 && speedIncrementA == 50)
+                {
+                    speedIncrementA = 10;
+                }
+                speedIncrease.Play();
             } 
         }
         public void gameOver(string playerID)
         {
+            gameFinished.Play();
             if (playerID == "A")
             {
                 gameTimerA.Stop();
