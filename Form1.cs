@@ -232,6 +232,7 @@ namespace Snake_
             // Reseting vars and controls:
             currentScore = 0;
             gameoverPause.Stop();
+            submitB.Enabled = true;
 
             initSnake();
             generateFood();
@@ -242,7 +243,7 @@ namespace Snake_
             gameover.Visible = false;
             hsName.Visible = false;
             hsNameVal.Visible = false;
-            hsName.Text = "";
+            hsNameVal.Text = "";
             submitB.Visible = false;
             newDirection = "Down";
         }
@@ -285,6 +286,7 @@ namespace Snake_
 
             // Then resume normal closing of form:
             gameoverPause.Start();
+            submitB.Enabled = false;
         }
     }
 }

@@ -54,7 +54,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 250;
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.GameTick);
             // 
             // gameover
@@ -129,11 +129,11 @@
             // hsNameVal
             // 
             this.hsNameVal.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.hsNameVal.Font = new System.Drawing.Font("Segoe UI", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hsNameVal.Font = new System.Drawing.Font("ROG Fonts", 20.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.hsNameVal.ForeColor = System.Drawing.Color.White;
             this.hsNameVal.Location = new System.Drawing.Point(1207, 900);
             this.hsNameVal.Name = "hsNameVal";
-            this.hsNameVal.Size = new System.Drawing.Size(1076, 78);
+            this.hsNameVal.Size = new System.Drawing.Size(1076, 88);
             this.hsNameVal.TabIndex = 6;
             this.hsNameVal.Visible = false;
             // 
